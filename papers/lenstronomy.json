@@ -1,0 +1,22 @@
+{"paper_id": "lenstronomy",
+"paper_link": "https://arxiv.org/abs/1803.09746", 
+"code_available": true,
+"code_link": "https://github.com/lenstronomy/lenstronomy",
+"publication_date": "2018-12-24",
+"title": "lenstronomy: Multi-purpose gravitational lens modelling software package",
+"abstract": "We present lenstronomy, a multi-purpose open-source gravitational lens modelling pythonpackage. lenstronomy is able to reconstruct the lens mass and surface brightness distributions of strong lensing systems using forward modelling. lenstronomy supports a wide range of analytic lens and light models in arbitrary combination. The software is also able to reconstruct complex extended sources (Birrer et. al 2015) as well as being able to model point sources. We designed lenstronomy to be stable, flexible and numerically accurate, with a clear user interface that could be deployed across different platforms. Throughout its development, we have actively used lenstronomy to make several measurements including deriving constraints on dark matter properties in strong lenses, measuring the expansion history of the universe with time-delay cosmography, measuring cosmic shear with Einstein rings and decomposing quasar and host galaxy light. The software is distributed under the MIT license. The documentation, starter guide, example notebooks, source code and installation guidelines can be found at https://lenstronomy.readthedocs.io.",
+"dataset": {
+    "kind": "none",
+    "paper_id": "lenstronomy",
+    "dataset_name": "none",
+    "data_instructions": {"access": "All results use data generated as part of the paper's methodology."}
+},
+"execution_requirements": {
+    "needs_gpu": false,
+    "needs_browsing": false,
+    "code_language": "python",
+    "dependencies": ["numpy<2", "astropy<7", "scipy>=0.19.1", "matplotlib", "emcee>=3.0.0", "scikit-learn", "numba>=0.57.0", "dynesty", "pymultinest", "corner>=2.2.1", "scikit-image", "pyyaml", "h5py", "tqdm", "schwimmbad>=0.3.2", "multiprocess>=0.70.8"]
+  },
+"other_instructions": null,
+"source": "expert"
+}

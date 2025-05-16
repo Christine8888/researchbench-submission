@@ -1,0 +1,11 @@
+{
+    "task_id": "mtov_spin_figure",
+    "paper_id": "gw_nsbh",
+    "kind": "figure",
+    "difficulty": 4,
+    "description": "Figure 5 (NS maximum mass distribution under different spin assumptions)",
+    "instructions": "Reproduce the figure from the paper which shows the posterior distribution of parameter M_TOV under different assumptions about the neutron star spin distribution. The caption of the figure states: 'Estimates of MTOV and M99 for different priors on the population a2 distribution parameters beta_s and a_max/a_Kep, using the 'ZS' spin prior: free beta_s and a_max/a_Kep; fixed beta_s = 0 fixed a_max/a_Kep; and a_max/a_Kep (nonspinning); and fixed a_min/a_Kep = 0.9 (requiring maximally spinning GW190814). All events fit with a 1-component NS mass model and random pairing (beta = 0).'",
+    "expected_output": "Figure 5 from the paper",
+    "tolerance": "",
+    "parents": ["default_mtov", "load_data"]
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": "fermat_potential_calculation",
+  "kind": "numeric",
+  "difficulty": 4,
+  "description": "Calculate and validate the Fermat potential for a singular isothermal sphere (SIS) lens model, which is fundamental to time delay calculations.",
+  "instructions": "1. Set up the lens model: Initialize a `lenstronomy.LensModel.lens_model.LensModel` instance with lens_model_list=['SIS'] and a cosmology with H0 = 70 km/s/Mpc, Omega_m = 0.3.\n2. Define lens parameters: Set theta_E = 1.0 arcsec (Einstein radius) and center_x = center_y = 0 for the SIS model.\n3. Define source position: Set beta_x = 0.2 arcsec, beta_y = 0 arcsec.\n4. Find image positions: Use the `image_position_from_source` method to find the multiple images. For an SIS with a source at (β, 0), two images form at x₁ = β+√(θE²+β²) and x₂ = β-√(θE²+β²) along the x-axis.\n5. Calculate numerical Fermat potential: Use `lenstronomy.LensModel.lens_model_extensions.LensModelExtensions` and its `fermat_potential` method to compute the Fermat potential at each image position. Set z_lens = 0.5 and z_source = 2.0.\n6. Calculate analytical Fermat potential: For an SIS model, the analytical Fermat potential is given by φ(θ) = 1/2(θ-β)² - θE|θ|, where θ is the image position and β is the source position. Calculate this value for both images.\n7. Calculate the relative Fermat potential: Compute the difference in Fermat potential between the two images using both the numerical and analytical methods.\n8. Report the fractional difference between these two relative Fermat potential values, defined as |Δφ_numerical - Δφ_analytical|/|Δφ_analytical|.\n9. The expected result should be very close to zero, indicating agreement between lenstronomy's numerical calculation and the analytical formula as described in the lenstronomy paper's cosmography application section.",
+  "expected_output": 0.0,
+  "tolerance": 2e-2,
+  "parents": [],
+  "paper_id": "lenstronomy",
+  "output_justification": "The expected output of 0.0 is based on comparing lenstronomy's numerical implementation of the Fermat potential calculation with the known analytical formula for a SIS lens. This is a verification test of lenstronomy's accuracy in calculating time delays, which is critical for cosmographic applications as described in the time-delay cosmography section of the paper. The expected equality between numerical and analytical results is a mathematical requirement, not a value stated explicitly in the paper."
+}

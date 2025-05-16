@@ -1,0 +1,22 @@
+{
+    "task_id": "default_mtov",
+    "paper_id": "gw_nsbh",
+    "kind": "numeric",
+    "difficulty": 5,
+    "description": "Calculate the 68% credible interval on the neutron star maximum mass (M_TOV) under default hierarchical inference settings.",
+    "instructions": "1. Implement the hierarchical Bayesian inference framework described in Section II.B.\n2. Use the population model defined in Equation 6, incorporating:\n    - The 'ZS' spin prior (Section II.A.1): Primary BH nonspinning ($a_1 = 0$), secondary NS spin isotropic in tilt, with magnitude following $p(a_2 | a_\\mathrm{max}, \\beta_{{s}}) \\propto (1-a_2)^{\\beta_{s}}$ for $0 < a_2 < a_\\mathrm{max}$. Infer the hyperparameters $\\beta_s$ and $a_\\mathrm{max}/a_\\mathrm{Kep}$ using priors from Table I ($a_{\\mathrm{Kep}}=0.7$).\n    - The 'Default' NS mass model (Section II.A.2): Single truncated Gaussian distribution $p(m_2 | \\mu, \\sigma, M_\\mathrm{min}, M_\\mathrm{max})$, with $M_\\mathrm{min}=1\\,M_\\odot$. The maximum mass $M_\\mathrm{max}$ depends on spin $a_2$ via the universal relationship $M_{\\text{max}}(a_2, a_{\\text{Kep}}, M_{\\text{TOV}}) = M_{\\text{TOV}}\\left(1 + 0.132\\left(\\frac{a_2}{0.7}\\right)^2+0.0071\\left(\\frac{a_2}{0.7}\\right)^4\\right)$. Infer the hyperparameters $\\mu, \\sigma, M_\\mathrm{TOV}$.\n    - The BH mass model (Section II.A.3): Power law $p(m_1 | \\alpha, M_{\\rm BH}) \\propto m_1^{-\\alpha}$ for $m_1 > M_{\\rm BH}$. Infer $\\alpha$ and $M_\\mathrm{BH}$.\n    - The pairing function (Section II.A.3): $p(q) \\propto q^{\\beta}$ with $\\beta=0$.\n3. Use priors for all hyperparameters as specified in Table I.\n4. Include selection effects using the semi-analytic approach from Section II.B.2, assuming an SNR threshold $\\rho_\\mathrm{thresh} = 8$ and aLIGO O3 sensitivity. Use the provided injection set calculation method.\n5. Use the parameter estimation posterior samples for all 4 LIGO events listed in Section III.A: GW200105 ('Combined_PHM_high_spin'), GW200115 ('Combined_PHM_high_spin'), GW190814 ('IMRPhenomPv3HM'), and GW190426 ('IMRPhenomNSBH').\n6. Run the hierarchical inference (e.g., using MCMC) to obtain the posterior distribution for the population hyperparameters $\\Lambda = (\\mu, \\sigma, M_\\mathrm{TOV}, \\alpha, M_\\mathrm{BH}, a_\\mathrm{max}/a_\\mathrm{Kep}, \\beta_s)$.\n7. From the posterior samples of the hyperparameters, calculate the posterior distribution for the maximum *non-spinning* NS mass, $M_{TOV}$. \n8. Calculate the 16th, 50th (median), and 84th percentiles of the $M_{TOV}$ posterior distribution to obtain the 68% credible interval.\n9. Return the result as a list in the format [lower bound (16th percentile), median (50th percentile), upper bound (84th percentile)].",
+    "tolerance": [
+        0.05,
+        0.05,
+        0.05
+    ],
+    "expected_output": [
+        2.6,
+        2.8,
+        3.1
+    ],
+    "parents": [
+        "load_data"
+    ],
+    "output_justification": "The expected output corresponds to the 68% credible interval for M_99 ($2.8^{+0.3}_{-0.2}\\,M_\\odot$) reported in Section III.B.1 for the default model (all 4 events, $\\beta = 0$, 'ZS' spin prior with free spin parameters, 1-component NS mass model). This result is also visualized as the black solid curve in Figure 3(b)."
+}

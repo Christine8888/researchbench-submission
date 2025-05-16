@@ -1,0 +1,12 @@
+{
+  "task_id": "mass_sheet_transformation",
+  "kind": "numeric",
+  "difficulty": 5,
+  "description": "Demonstrate the mass-sheet transformation (MST) degeneracy and its effect on time delays for a power-law elliptical mass distribution.",
+  "instructions": "1. Define the lens model: Use the 'EPL' (Elliptical Power Law) model in lenstronomy with parameters: theta_E = 1.0 arcsec (Einstein radius), gamma = 2.0 (power-law slope, isothermal case), e1 = 0.1765, e2 = 0 (ellipticity components corresponding to axis ratio = 0.7 and position angle = 0 degrees), center_x = 0, center_y = 0.\n2. Define a source position: Place a source at (beta_x, beta_y) = (0.1, 0.1) arcsec.\n3. Initialize the lens model: Create an instance of `lenstronomy.LensModel.lens_model.LensModel` with lens_model_list=['EPL'].\n4. Find image positions: Use the `image_position_from_source` method of `LensModel` to find multiple images produced by the source.\n5. Calculate original time delays: Initialize `lenstronomy.LensModel.lens_model.LensModel` and use the `arrival_time` method to calculate the Fermat potential at each image position. Set z_lens = 0.5 and z_source = 2.0 with standard cosmology (H0 = 70 km/s/Mpc, Omega_m = 0.3).\n6. Apply mass-sheet transformation: Create a transformed model by adding an external convergence kappa_ext = 0.1 (equivalent to lambda = 0.9) to the original model. As described in Birrer et al. (2016), the MST transforms the convergence as κ'(θ) = λκ(θ) + (1-λ).\n7. Calculate transformed time delays: Use the same image positions but with the transformed lens model parameters to calculate new arrival times.\n8. Calculate ratio: Compute the ratio of original time delay to transformed time delay between any pair of images (e.g., between the first and second images). According to theory, this ratio should exactly equal lambda = 0.9.\n9. Report the ratio value.",
+  "expected_output": 0.9,
+  "tolerance": 0.1,
+  "parents": [],
+  "paper_id": "lenstronomy",
+  "output_justification": "The expected output of 0.9 is based on the mathematical property of the mass-sheet transformation described in Birrer et al. (2016) 'The mass-sheet degeneracy and time-delay cosmography: analysis of the strong lens RXJ1131-1231'. When applying a mass-sheet transformation with lambda = 0.9, the time delays between multiple images scale precisely by this factor lambda. This is a theoretical result that any correct implementation of gravitational lensing must satisfy."
+}

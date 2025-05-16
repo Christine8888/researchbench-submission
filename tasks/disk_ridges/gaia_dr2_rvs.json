@@ -1,0 +1,11 @@
+{
+  "task_id": "gaia_dr2_rvs",
+  "paper_id": "disk_ridges",
+  "kind": "numeric",
+  "difficulty": 1,
+  "description": "Select and count stars from Gaia DR2 that have radial velocity measurements and good distance estimates.",
+  "instructions": "Count Gaia DR2 stars that belong to the 'RVS' sample (radial-velocity catalogue) and satisfy the criteria from Section 2 of the paper (Data and Analysis). Return a single integer: the count of rows that fulfil all four criteria.",
+  "tolerance": 0,
+  "expected_output": 861680,
+  "parents": []
+}

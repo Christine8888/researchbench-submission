@@ -1,0 +1,12 @@
+{
+  "task_id": "lens_equation_validation",
+  "kind": "numeric",
+  "difficulty": 4,
+  "description": "Validate that lenstronomy correctly implements the lens equation for a singular isothermal sphere (SIS) model.",
+  "instructions": "1. Set up the lens model: Initialize a `lenstronomy.LensModel.lens_model.LensModel` instance with lens_model_list=['SIS'] for a singular isothermal sphere.\n2. Define lens parameters: Set theta_E = 1.0 arcsec (Einstein radius) and center_x = center_y = 0 for the SIS model.\n3. Define source position: Set beta_x = 0.5 arcsec, beta_y = 0 arcsec.\n4. Find image positions: Use the `image_position_from_source` method of the LensModel class to find the positions of the multiple images created by this configuration. For an SIS model with a source at (β, 0), two images should form at positions (β+√(θE²+β²), 0) and (β-√(θE²+β²), 0).\n5. Compute deflection angles: For each image position found, calculate the deflection angle (alpha_x, alpha_y) using the `alpha` method of the LensModel class.\n6. Verify lens equation: For each image position (θ₁, θ₂) and its corresponding deflection angle (α₁, α₂), calculate the source position using the lens equation: β₁ = θ₁ - α₁, β₂ = θ₂ - α₂. This reconstructed source position should match the original source position (0.5, 0).\n7. Calculate error: Compute the maximum absolute difference between any component of the reconstructed source positions and the original source position (0.5, 0).\n8. Report this maximum error value in arcseconds. If lenstronomy correctly implements the lens equation, this error should be near zero (limited only by numerical precision).",
+  "expected_output": 0.0,
+  "tolerance": 3e-2,
+  "parents": [],
+  "paper_id": "lenstronomy",
+  "output_justification": "The expected output of 0.0 represents verification of the fundamental lens equation (β = θ - α(θ)) which must be satisfied by any valid gravitational lensing implementation. This is a mathematical identity in gravitational lensing theory, not a value from the paper. Any deviation from zero would indicate an error in the implementation. The tolerance of 10^-8 accounts only for floating-point precision limitations."
+}

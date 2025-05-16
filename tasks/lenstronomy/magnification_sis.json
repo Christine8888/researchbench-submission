@@ -1,0 +1,12 @@
+{
+  "task_id": "magnification_sis",
+  "kind": "numeric",
+  "difficulty": 3,
+  "description": "Calculate and validate the magnification for a singular isothermal sphere (SIS) lens model against the analytical solution.",
+  "instructions": "1. Set up the lens model: Initialize a `lenstronomy.LensModel.lens_model.LensModel` instance with lens_model_list=['SIS'].\n2. Define lens parameters: Set theta_E = 1.0 arcsec (Einstein radius) and center_x = center_y = 0 for the SIS model.\n3. Define source position: Set beta_x = 0.5 arcsec, beta_y = 0 arcsec. The source should be located at half the Einstein radius.\n4. Find image positions: Use the `image_position_from_source` method to find multiple images. For an SIS model with a source at (β, 0), two images form at positions (β+√(θE²+β²), 0) and (β-√(θE²+β²), 0).\n5. Calculate numerical magnifications: For each image position, compute the magnification using the `magnification` method of the LensModel class. The determinant of the lensing Jacobian is calculated by lenstronomy as described in Section 3.1 of the paper.\n6. Calculate analytical magnifications: For an SIS model, the analytical magnifications for the two images are μ₁ = 1/(1-θE/|θ₁|) and μ₂ = 1/(1+θE/|θ₂|), where θ₁ and θ₂ are the angular distances of the images from the lens center. Note that one image will have positive magnification and the other negative magnification.\n7. Calculate total magnification: Sum the absolute values of the magnifications for both the numerical and analytical calculations: μ_tot = |μ₁| + |μ₂|.\n8. Report the absolute difference between the numerical and analytical total magnification values: |μ_tot_numerical - μ_tot_analytical|.\n9. The expected result should be very close to zero, indicating agreement between lenstronomy's numerical magnification and the analytical formula.",
+  "expected_output": 0.0,
+  "tolerance": 3e-2,
+  "parents": [],
+  "paper_id": "lenstronomy",
+  "output_justification": "The expected output of 0.0 is based on comparing lenstronomy's numerical magnification calculation with the known analytical formula for a SIS lens. This is a mathematical verification that lenstronomy's implementation correctly calculates magnifications, which is a fundamental capability described in the LensModel section of the paper. The agreement between numerical and analytical results should be limited only by numerical precision, not by any approximation in the implementation."
+}

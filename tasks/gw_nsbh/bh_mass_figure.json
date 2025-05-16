@@ -1,0 +1,11 @@
+{
+    "task_id": "bh_mass_figure",
+    "paper_id": "gw_nsbh",
+    "kind": "figure",
+    "difficulty": 2,
+    "description": "Figure 7 (BH mass distribution under different spin priors)",
+    "instructions": "Reproduce the figure from the paper, which shows the posterior distribution of parameter M_BH under different spin priors. The caption of the figure states: 'Estimates of MBH for different a2 priors with pairing function beta = 0: uniform and isotropic ('U + I', black solid), non-spinning BH (default 'ZS', blue dashed), and non-spinning BH + aligned spin NS ('ZS + AS', red dotted). Posterior on MBH for the 'ZS' spin prior with beta = 3 is shown (green dash-dot). All events fit with a 1-component NS mass model.'",
+    "expected_output": "Figure 7 from the paper",
+    "tolerance": "",
+    "parents": ["default_mbh", "load_data"]
+}
