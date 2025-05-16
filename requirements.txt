@@ -1,0 +1,8 @@
+inspect-ai
+numpy
+pandas
+json
+submitit
+datasets
+wget
+huggingface_hub
